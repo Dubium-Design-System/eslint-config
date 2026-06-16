@@ -1,43 +1,158 @@
 {
 	"name": "@dubium/eslint-config",
-	"private": false,
 	"version": "2.0.0",
 	"type": "module",
+	"private": false,
+	"sideEffects": false,
 	"publishConfig": {
 		"access": "public"
 	},
 	"exports": {
-		"./base": "./config/base.js",
-		"./react": "./config/react.js",
-		"./jsx-a11y": "./config/jsx-a11y.js",
-		"./typescript": "./config/typescript.js"
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./common": {
+			"types": "./dist/common/index.d.ts",
+			"import": "./dist/common/index.js"
+		},
+		"./base": {
+			"types": "./dist/common/base.d.ts",
+			"import": "./dist/common/base.js"
+		},
+		"./comments": {
+			"types": "./dist/common/comments.d.ts",
+			"import": "./dist/common/comments.js"
+		},
+		"./ignores": {
+			"types": "./dist/common/ignores.d.ts",
+			"import": "./dist/common/ignores.js"
+		},
+		"./sort": {
+			"types": "./dist/common/sort.d.ts",
+			"import": "./dist/common/sort.js"
+		},
+		"./stylistic": {
+			"types": "./dist/common/stylistic.d.ts",
+			"import": "./dist/common/stylistic.js"
+		},
+		"./typescript": {
+			"types": "./dist/common/typescript.d.ts",
+			"import": "./dist/common/typescript.js"
+		},
+		"./typescript-type-checked": {
+			"types": "./dist/common/typescript-type-checked.d.ts",
+			"import": "./dist/common/typescript-type-checked.js"
+		},
+		"./recommended": {
+			"types": "./dist/presets/recommended.d.ts",
+			"import": "./dist/presets/recommended.js"
+		},
+		"./recommended-type-checked": {
+			"types": "./dist/presets/recommended-type-checked.d.ts",
+			"import": "./dist/presets/recommended-type-checked.js"
+		},
+		"./legacy": {
+			"types": "./dist/presets/legacy.d.ts",
+			"import": "./dist/presets/legacy.js"
+		},
+		"./react": {
+			"types": "./dist/react/index.d.ts",
+			"import": "./dist/react/index.js"
+		},
+		"./react/rules": {
+			"types": "./dist/react/react.d.ts",
+			"import": "./dist/react/react.js"
+		},
+		"./react/stylistic": {
+			"types": "./dist/react/react-stylistic.d.ts",
+			"import": "./dist/react/react-stylistic.js"
+		},
+		"./react/jsx-a11y": {
+			"types": "./dist/react/jsx-a11y.d.ts",
+			"import": "./dist/react/jsx-a11y.js"
+		},
+		"./react/recommended": {
+			"types": "./dist/react/react-recommended.d.ts",
+			"import": "./dist/react/react-recommended.js"
+		},
+		"./react/strict": {
+			"types": "./dist/react/react-strict.d.ts",
+			"import": "./dist/react/react-strict.js"
+		},
+		"./node": {
+			"types": "./dist/node/index.d.ts",
+			"import": "./dist/node/index.js"
+		},
+		"./node/rules": {
+			"types": "./dist/node/node.d.ts",
+			"import": "./dist/node/node.js"
+		},
+		"./nest": {
+			"types": "./dist/node/nest.d.ts",
+			"import": "./dist/node/nest.js"
+		},
+		"./nest/recommended": {
+			"types": "./dist/node/nest-recommended.d.ts",
+			"import": "./dist/node/nest-recommended.js"
+		},
+		"./nest/strict": {
+			"types": "./dist/node/nest-strict.d.ts",
+			"import": "./dist/node/nest-strict.js"
+		}
 	},
 	"files": [
 		"config",
 		"README.md",
 		"LICENSE"
 	],
-	"description": "Flat ESLint config for Dubium projects using TypeScript, React, and accessibility best practices.",
+	"description": "Opinionated ESLint flat config for strict TypeScript, React and NestJS projects.",
 	"keywords": [
 		"eslint",
 		"eslintconfig",
+		"flat-config",
 		"typescript",
 		"react",
-		"flat-config"
+		"nestjs",
+		"styleguide"
 	],
-	"homepage": "https://github.com/DubiumEkb/dubium-design/",
+	"homepage": "https://github.com/Dubium-Design-System/eslint-config/",
 	"bugs": {
-		"url": "https://github.com/DubiumEkb/dubium-design/issues"
+		"url": "https://github.com/Dubium-Design-System/eslint-config/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/DubiumEkb/dubium-design.git"
+		"url": "git+https://github.com/Dubium-Design-System/eslint-config.git"
 	},
 	"author": "https://github.com/DubiumEkb",
 	"license": "MIT",
 	"scripts": {
-		"version:push": "npm publish --access=public",
-		"lint:inspect": "npx eslint --inspect-config"
+		"clean": "rimraf dist *.tgz",
+		"build": "tsc -p tsconfig.build.json",
+		"prepack": "npm run clean && npm run build",
+		"pack:check": "npm pack --dry-run",
+		"pack:local": "npm pack",
+		"lint:inspect": "eslint --inspect-config",
+		"version:alpha:first": "npm version premajor --preid=alpha",
+		"version:alpha": "npm version prerelease --preid=alpha",
+		"version:beta:first": "npm version premajor --preid=beta",
+		"version:beta": "npm version prerelease --preid=beta",
+		"version:release": "npm version major",
+		"version:patch": "npm version patch",
+		"version:minor": "npm version minor",
+		"version:major": "npm version major",
+		"publish:alpha": "npm publish --access=public --tag alpha",
+		"publish:beta": "npm publish --access=public --tag beta",
+		"publish:next": "npm publish --access=public --tag next",
+		"publish:release": "npm publish --access=public --tag latest",
+		"release:alpha:first": "npm run version:alpha:first && npm run publish:alpha",
+		"release:alpha": "npm run version:alpha && npm run publish:alpha",
+		"release:beta:first": "npm run version:beta:first && npm run publish:beta",
+		"release:beta": "npm run version:beta && npm run publish:beta",
+		"release:patch": "npm run version:patch && npm run publish:release",
+		"release:minor": "npm run version:minor && npm run publish:release",
+		"release:major": "npm run version:major && npm run publish:release",
+		"tags": "npm dist-tag ls @dubium/eslint-config"
 	},
 	"peerDependenciesMeta": {
 		"@typescript-eslint/eslint-plugin": {
