@@ -1,251 +1,169 @@
 # @dubium/eslint-config
 
-**Flat ESLint config** for Dubium projects — modular, extensible, and strictly structured.
-Supports **TypeScript**, **React**, and **accessibility (a11y)** best practices.
+Opinionated ESLint flat config for TypeScript, React, NestJS, and Node.js projects.
 
-[Русская версия](https://github.com/DubiumEkb/dubium-design/blob/main/packages/eslint-config/README-RU.md)
-
----
-
-## 📦 Installation
-
-Install the config and the required peer dependencies according to your needs.
-
-### 🔹 Base configuration (`base`)
+## Install
 
 ```bash
-npm install -D eslint @eslint/js globals @dubium/eslint-config
-# or
-yarn add -D eslint @eslint/js globals @dubium/eslint-config
+npm install -D @dubium/eslint-config eslint typescript
 ```
 
-<sub>It is also recommended to install `globals` if you use global variables in your ESLint config.</sub>
+Minimum versions:
 
----
-
-### 🔹 TypeScript (`typescript`)
-
-```bash
-npm install -D typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
-# or
-yarn add -D typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```txt
+Node.js     >=22.13.0
+ESLint      >=10.5.0 <11
+TypeScript  >=6.0.3 <7
 ```
 
----
+## Quick start
 
-### 🔹 React (`react`)
-
-```bash
-npm install -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
-# or
-yarn add -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
-```
-
----
-
-### 🔹 Accessibility (`jsxA11y`)
-
-```bash
-npm install -D eslint-plugin-jsx-a11y
-# or
-yarn add -D eslint-plugin-jsx-a11y
-```
-
----
-
-### 🔹 Prettier
-
-```bash
-npm install -D prettier eslint-config-prettier eslint-plugin-prettier
-# or
-yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
-```
-
-###
-
-## ⚙️ Usage
-
-Create an `eslint.config.cjs` file:
+### TypeScript / Node / NestJS
 
 ```js
 import { defineConfig } from "eslint/config"
-import { base } from "@dubium/eslint-config/base"
-import { typescript } from "@dubium/eslint-config/typescript"
-import { react } from "@dubium/eslint-config/react"
-import globals from "globals"
-import prettier from "eslint-config-prettier"
-import eslintPluginPrettier from "eslint-plugin-prettier"
-
-// Модифицируем typescript конфиг для поддержки type-aware правил
-const enhancedTypescript = {
-  ...typescript,
-  languageOptions: {
-    ...typescript.languageOptions,
-    parserOptions: {
-      ...( typescript.languageOptions?.parserOptions || {} ),
-      project: "./tsconfig.json",
-      tsconfigRootDir: process.cwd(),
-      // Для поддержки path aliases (@/*)
-      EXPERIMENTAL_useProjectService: true,
-    },
-  },
-}
-
-export default defineConfig( [
-  base,
-  enhancedTypescript,
-  react,
-  {
-    plugins: {
-      prettier: eslintPluginPrettier,
-    },
-    rules: {
-      "prettier/prettier": "error",
-    },
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
-    },
-  },
-  prettier,
-  {
-    files: [ "**/*.schema.ts" ],
-    rules: {
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off"
-    }
-  }
-] )
-
-
-```
-
-### Or Example for Nestjs
-
-```js
-import { defineConfig } from "eslint/config"
-import { base } from "@dubium/eslint-config/base"
-import { typescript } from "@dubium/eslint-config/typescript"
-import globals from "globals"
-import prettier from "eslint-config-prettier"
-import eslintPluginPrettier from "eslint-plugin-prettier"
-
-// Модифицируем typescript конфиг для поддержки type-aware правил
-const enhancedTypescript = {
-	...typescript,
-	languageOptions: {
-		...typescript.languageOptions,
-		parserOptions: {
-			...(typescript.languageOptions?.parserOptions || {}),
-			project: "./tsconfig.json",
-			tsconfigRootDir: process.cwd(),
-			// Для поддержки path aliases (@/*)
-			EXPERIMENTAL_useProjectService: true,
-		},
-	},
-}
+import { nestStrict } from "@dubium/eslint-config/nest"
 
 export default defineConfig([
-	base,
-	enhancedTypescript,
-	{
-		plugins: {
-			prettier: eslintPluginPrettier,
-		},
-		rules: {
-			"prettier/prettier": "error",
-		},
-		languageOptions: {
-			globals: {
-				...globals.node,
-				...globals.jest,
-			},
-		},
-	},
-	prettier,
-	{
-		rules: {
-			"@typescript-eslint/no-unsafe-call": "off",
-			"@typescript-eslint/no-unsafe-assignment": "off",
-			"new-cap": [
-				"error",
-				{
-					capIsNew: false,
-					newIsCap: false,
-					properties: true,
-				},
-			],
-			"class-methods-use-this": "off",
-		},
-	},
+ ...nestStrict,
 ])
 ```
 
-You can also use only the configs you need:
+### React + Vite
 
 ```js
+import { defineConfig } from "eslint/config"
+import {
+ browserRuntime,
+ nodeRuntime,
+ reactRecommended,
+} from "@dubium/eslint-config"
+
 export default defineConfig([
-  base,
-  typescript,
-]);
+ ...reactRecommended,
+ ...browserRuntime,
+ ...nodeRuntime,
+])
 ```
 
----
+### React + Vite + Vitest
 
-> If your project uses global variables (e.g. `window`, `process`, `jest`, etc.), we recommend installing the `globals` package and adding them to your ESLint configuration:
->
-> ```js
-> import globals from "globals";
->
-> export default defineConfig({
->   languageOptions: {
->     globals: {
->       ...globals.browser,
->       ...globals.node,
->       ...globals.jest,
->     },
->   },
->   // other settings
-> });
-> ```
+```js
+import { defineConfig } from "eslint/config"
+import {
+ browserRuntime,
+ nodeRuntime,
+ reactRecommended,
+ vitestRuntime,
+} from "@dubium/eslint-config"
 
----
-
-## 🧩 Available configs
-
-| Config       | Import from                        | Description                          |
-| ------------ | ---------------------------------- | ------------------------------------ |
-| `base`       | `@dubium/eslint-config/base`       | Basic JS/TS setup + globals          |
-| `typescript` | `@dubium/eslint-config/typescript` | TypeScript support                   |
-| `react`      | `@dubium/eslint-config/react`      | React, hooks, and React Refresh      |
-| `jsxA11y`    | `@dubium/eslint-config/jsx-a11y`   | Accessibility (a11y) recommendations |
-
----
-
-## 🔍 Inspect final config
-
-```bash
-npx eslint --print-config src/index.ts
+export default defineConfig([
+ ...reactRecommended,
+ ...browserRuntime,
+ ...nodeRuntime,
+ ...vitestRuntime,
+])
 ```
 
-Or, if you have the script added:
+### NestJS + Jest
 
-```bash
-npm run lint:inspect
+```js
+import { defineConfig } from "eslint/config"
+import {
+ jestRuntime,
+ nestStrict,
+ nodeRuntime,
+} from "@dubium/eslint-config"
+
+export default defineConfig([
+ ...nestStrict,
+ ...nodeRuntime,
+ ...jestRuntime,
+])
 ```
 
----
+### React + Jest
 
-## 🔧 Requirements
+```js
+import { defineConfig } from "eslint/config"
+import {
+ browserRuntime,
+ jestRuntime,
+ reactRecommended,
+} from "@dubium/eslint-config"
 
-* **Node.js** `>=18`
-* **ESLint** `^9.0.0` (Flat Config)
-* Your project must use `"type": "module"`
+export default defineConfig([
+ ...reactRecommended,
+ ...browserRuntime,
+ ...jestRuntime,
+])
+```
 
----
+## Exports
 
-## 📝 License
+```txt
+commonComments
+commonIgnores
+commonJavascript
+commonSorting
+commonStylistic
 
-[MIT](./LICENSE) © [Dubium](https://github.com/DubiumEkb)
+typescriptBase
+typescriptSemantic
+typescriptSorting
+typescriptStrict
+
+browserRuntime
+nodeRuntime
+vitestRuntime
+jestRuntime
+
+reactCore
+reactStylistic
+reactRecommended
+reactStrict
+
+nestConventions
+nestRecommended
+nestStrict
+
+recommended
+recommendedFast
+legacy
+```
+
+## Runtime configs
+
+Runtime globals are separated from framework configs:
+
+```txt
+reactCore       — React/JSX rules only
+browserRuntime  — browser globals
+nodeRuntime     — Node.js globals and Node rules
+vitestRuntime   — Vitest globals
+jestRuntime     — Jest globals and Jest test rules
+```
+
+## Sorting
+
+Sorting is based on `eslint-plugin-perfectionist`.
+
+The package provides its own sorting standard. If another sorting style is required, skip `commonSorting` / `typescriptSorting` and use one of the `eslint-plugin-perfectionist` presets:
+
+```txt
+recommended-alphabetical
+recommended-natural
+recommended-line-length
+recommended-custom
+```
+
+## Principles
+
+```txt
+1. No export *.
+2. No default export in internal modules.
+3. Common rules are separated from runtime/framework rules.
+4. React is not mixed with browser globals.
+5. Type-aware TypeScript rules live in semantic/strict layers.
+6. Deprecated/unstable rules are not enabled without a reason.
+```

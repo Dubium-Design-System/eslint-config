@@ -1,0 +1,10 @@
+declare module "@eslint-community/eslint-plugin-eslint-comments";
+declare module "@eslint-react/eslint-plugin";
+declare module "@eslint/js";
+declare module "@stylistic/eslint-plugin";
+declare module "eslint-plugin-jest";
+declare module "eslint-plugin-n";
+declare module "eslint-plugin-perfectionist";
+declare module "eslint-plugin-react-refresh";
+declare module "globals";
+declare module "typescript-eslint";

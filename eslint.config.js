@@ -1,13 +1,14 @@
-import { defineConfig } from "eslint/config";
-import { base } from "./config/base.js";
-import { react } from "./config/react.js";
-import { typescript } from "./config/typescript.js";
+import { defineConfig } from "eslint/config"
+
+import { nodeRuntime, recommendedFast } from "./dist/index.js"
 
 export default defineConfig([
-	base,
-	react,
-	typescript,
+	...recommendedFast,
+	...nodeRuntime,
 	{
-		rules: {},
+		files: [ "eslint.config.{js,mjs,ts,mts}" ],
+		rules: {
+			"no-restricted-exports": "off",
+		},
 	},
-]);
+])

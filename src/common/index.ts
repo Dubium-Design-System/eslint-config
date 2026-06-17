@@ -1,0 +1,5 @@
+export { commonComments } from "./comments.js"
+export { commonIgnores } from "./ignores.js"
+export { commonJavascript } from "./javascript.js"
+export { commonSorting } from "./sorting.js"
+export { commonStylistic } from "./stylistic.js"
