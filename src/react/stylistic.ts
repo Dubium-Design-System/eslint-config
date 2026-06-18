@@ -4,13 +4,12 @@ import perfectionistPlugin from "eslint-plugin-perfectionist"
 export const reactStylistic = [
 	{
 		name: "@dubium/eslint-config/react/stylistic",
-		files: [ "**/*.{jsx,tsx}" ],
+		files: ["**/*.{jsx,tsx}"],
 		plugins: {
 			"@stylistic": stylisticPlugin,
 			perfectionist: perfectionistPlugin,
 		},
 		rules: {
-
 			/**
 			 * RU: Требует оборачивать многострочные JSX-выражения в скобки.
 			 * EN: Requires multiline JSX expressions to be wrapped in parentheses.

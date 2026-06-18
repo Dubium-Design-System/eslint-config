@@ -4,7 +4,7 @@ export const typescriptBase = [
 	...tseslint.configs.recommended,
 	{
 		name: "@dubium/eslint-config/typescript/base",
-		files: [ "**/*.{ts,tsx,mts,cts}" ],
+		files: ["**/*.{ts,tsx,mts,cts}"],
 		languageOptions: {
 			parser: tseslint.parser,
 		},
@@ -103,10 +103,7 @@ export const typescriptBase = [
 			 *
 			 * Docs: https://typescript-eslint.io/rules/consistent-indexed-object-style/
 			 */
-			"@typescript-eslint/consistent-indexed-object-style": [
-				"error",
-				"record",
-			],
+			"@typescript-eslint/consistent-indexed-object-style": ["error", "record"],
 
 			/**
 			 * RU: Требует type-only imports для типов, чтобы runtime imports оставались явными.
@@ -180,7 +177,7 @@ export const typescriptBase = [
 	},
 	{
 		name: "@dubium/eslint-config/typescript/base/declarations",
-		files: [ "**/*.d.ts" ],
+		files: ["**/*.d.ts"],
 		rules: {
 			/**
 			 * RU: Отключает требование interface в .d.ts, потому что declaration files часто отражают внешний API.

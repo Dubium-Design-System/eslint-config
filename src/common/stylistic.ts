@@ -3,7 +3,7 @@ import stylisticPlugin from "@stylistic/eslint-plugin"
 export const commonStylistic = [
 	{
 		name: "@dubium/eslint-config/common/stylistic",
-		files: [ "**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}" ],
+		files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"],
 		plugins: {
 			"@stylistic": stylisticPlugin,
 		},
@@ -14,7 +14,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/array-bracket-spacing
 			 */
-			"@stylistic/array-bracket-spacing": [ "error", "always" ],
+			"@stylistic/array-bracket-spacing": ["error", "always"],
 
 			/**
 			 * RU: Требует скобки вокруг параметров arrow-функций.
@@ -22,7 +22,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/arrow-parens
 			 */
-			"@stylistic/arrow-parens": [ "error", "always" ],
+			"@stylistic/arrow-parens": ["error", "always"],
 
 			/**
 			 * RU: Требует пробелы до и после стрелки в arrow-функциях.
@@ -44,7 +44,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/block-spacing
 			 */
-			"@stylistic/block-spacing": [ "error", "always" ],
+			"@stylistic/block-spacing": ["error", "always"],
 
 			/**
 			 * RU: Требует 1TBS-стиль фигурных скобок.
@@ -66,7 +66,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/comma-dangle
 			 */
-			"@stylistic/comma-dangle": [ "error", "always-multiline" ],
+			"@stylistic/comma-dangle": ["error", "always-multiline"],
 
 			/**
 			 * RU: Требует пробел после запятой и запрещает пробел перед запятой.
@@ -88,7 +88,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/comma-style
 			 */
-			"@stylistic/comma-style": [ "error", "last" ],
+			"@stylistic/comma-style": ["error", "last"],
 
 			/**
 			 * RU: Запрещает пробелы внутри computed property brackets.
@@ -96,7 +96,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/computed-property-spacing
 			 */
-			"@stylistic/computed-property-spacing": [ "error", "never" ],
+			"@stylistic/computed-property-spacing": ["error", "never"],
 
 			/**
 			 * RU: Требует переносить точку вместе со свойством при цепочках вызовов.
@@ -104,7 +104,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/dot-location
 			 */
-			"@stylistic/dot-location": [ "error", "property" ],
+			"@stylistic/dot-location": ["error", "property"],
 
 			/**
 			 * RU: Требует пустую строку в конце файла.
@@ -112,7 +112,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/eol-last
 			 */
-			"@stylistic/eol-last": [ "error", "always" ],
+			"@stylistic/eol-last": ["error", "always"],
 
 			/**
 			 * RU: Запрещает пробел между именем функции и скобками вызова.
@@ -120,7 +120,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/function-call-spacing
 			 */
-			"@stylistic/function-call-spacing": [ "error", "never" ],
+			"@stylistic/function-call-spacing": ["error", "never"],
 
 			/**
 			 * RU: Требует табы для отступов.
@@ -280,7 +280,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/object-curly-spacing
 			 */
-			"@stylistic/object-curly-spacing": [ "error", "always" ],
+			"@stylistic/object-curly-spacing": ["error", "always"],
 
 			/**
 			 * RU: Требует переносить оператор на следующую строку вместе с правой частью выражения.
@@ -288,7 +288,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/operator-linebreak
 			 */
-			"@stylistic/operator-linebreak": [ "error", "before" ],
+			"@stylistic/operator-linebreak": ["error", "before"],
 
 			/**
 			 * RU: Запрещает пустые строки внутри блоков.
@@ -296,7 +296,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/padded-blocks
 			 */
-			"@stylistic/padded-blocks": [ "error", "never" ],
+			"@stylistic/padded-blocks": ["error", "never"],
 
 			/**
 			 * RU: Требует кавычки у свойств объекта только там, где они нужны.
@@ -304,7 +304,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/quote-props
 			 */
-			"@stylistic/quote-props": [ "error", "as-needed" ],
+			"@stylistic/quote-props": ["error", "as-needed"],
 
 			/**
 			 * RU: Требует двойные кавычки для строк.
@@ -327,7 +327,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/rest-spread-spacing
 			 */
-			"@stylistic/rest-spread-spacing": [ "error", "never" ],
+			"@stylistic/rest-spread-spacing": ["error", "never"],
 
 			/**
 			 * RU: Запрещает точки с запятой.
@@ -335,7 +335,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/semi
 			 */
-			"@stylistic/semi": [ "error", "never" ],
+			"@stylistic/semi": ["error", "never"],
 
 			/**
 			 * RU: Требует единый стиль пробелов вокруг точки с запятой, если она встречается.
@@ -357,7 +357,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/semi-style
 			 */
-			"@stylistic/semi-style": [ "error", "last" ],
+			"@stylistic/semi-style": ["error", "last"],
 
 			/**
 			 * RU: Требует пробел перед блоком.
@@ -365,7 +365,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/space-before-blocks
 			 */
-			"@stylistic/space-before-blocks": [ "error", "always" ],
+			"@stylistic/space-before-blocks": ["error", "always"],
 
 			/**
 			 * RU: Требует единый стиль пробела перед скобками функции.
@@ -388,7 +388,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/space-in-parens
 			 */
-			"@stylistic/space-in-parens": [ "error", "never" ],
+			"@stylistic/space-in-parens": ["error", "never"],
 
 			/**
 			 * RU: Требует пробелы вокруг инфиксных операторов.
@@ -448,7 +448,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/template-curly-spacing
 			 */
-			"@stylistic/template-curly-spacing": [ "error", "never" ],
+			"@stylistic/template-curly-spacing": ["error", "never"],
 
 			/**
 			 * RU: Запрещает пробел между template tag и template literal.
@@ -456,7 +456,7 @@ export const commonStylistic = [
 			 *
 			 * Docs: https://eslint.style/rules/template-tag-spacing
 			 */
-			"@stylistic/template-tag-spacing": [ "error", "never" ],
+			"@stylistic/template-tag-spacing": ["error", "never"],
 		},
 	},
 ]

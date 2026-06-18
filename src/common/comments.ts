@@ -3,7 +3,7 @@ import eslintCommentsPlugin from "@eslint-community/eslint-plugin-eslint-comment
 export const commonComments = [
 	{
 		name: "@dubium/eslint-config/common/comments",
-		files: [ "**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}" ],
+		files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"],
 		plugins: {
 			"eslint-comments": eslintCommentsPlugin,
 		},
@@ -65,8 +65,8 @@ export const commonComments = [
 			"eslint-comments/no-use": "off",
 
 			/**
-			 * RU: Требует описание причины при отключении правила, чтобы disable-комментарий был понятен на code review.
-			 * EN: Requires a reason when disabling a rule so the disable comment is clear during code review.
+			 * RU: Предупреждает, если disable-комментарий не содержит описание причины, чтобы отключение правила было понятно на code review.
+			 * EN: Warns when a disable comment does not include a reason so the disable is clear during code review.
 			 *
 			 * Docs: https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/require-description.html
 			 */

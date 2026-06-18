@@ -4,7 +4,7 @@ export const nestStrict = [
 	...nestRecommended,
 	{
 		name: "@dubium/eslint-config/nest-strict",
-		files: [ "**/*.{ts,mts,cts}" ],
+		files: ["**/*.{ts,mts,cts}"],
 		rules: {
 			/**
 			 * RU: Предупреждает, если публичные функции не имеют явного return type.
@@ -55,7 +55,7 @@ export const nestStrict = [
 	},
 	{
 		name: "@dubium/eslint-config/nest-strict/tests",
-		files: [ "**/*.spec.ts", "**/*.test.ts", "**/test/**/*.ts" ],
+		files: ["**/*.spec.ts", "**/*.test.ts", "**/test/**/*.ts"],
 		rules: {
 			/**
 			 * RU: Разрешает any в strict NestJS-тестах для mock/spies и partial fixtures.

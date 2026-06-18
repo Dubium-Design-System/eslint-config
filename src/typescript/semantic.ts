@@ -5,7 +5,7 @@ export const typescriptSemantic = [
 	...tseslint.configs.recommendedTypeChecked,
 	{
 		name: "@dubium/eslint-config/typescript/semantic/setup",
-		files: [ "**/*.{ts,tsx,mts,cts}" ],
+		files: ["**/*.{ts,tsx,mts,cts}"],
 		languageOptions: {
 			parser: tseslint.parser,
 			parserOptions: {
@@ -16,7 +16,7 @@ export const typescriptSemantic = [
 	},
 	{
 		name: "@dubium/eslint-config/typescript/semantic/rules",
-		files: [ "**/*.{ts,tsx,mts,cts}" ],
+		files: ["**/*.{ts,tsx,mts,cts}"],
 		rules: {
 			/**
 			 * RU: Отключаем core-правило для TypeScript, потому что TS-версия учитывает типы, index signatures и private/protected members.
@@ -27,8 +27,8 @@ export const typescriptSemantic = [
 			"dot-notation": "off",
 
 			/**
-			 * RU: Требует dot notation вместо bracket notation, когда свойство можно безопасно прочитать как обычное статическое поле.
-			 * EN: Requires dot notation instead of bracket notation when a property can be safely accessed as a regular static field.
+			 * RU: Предупреждает, если вместо bracket notation можно безопасно использовать dot notation.
+			 * EN: Warns when dot notation can be safely used instead of bracket notation.
 			 *
 			 * Docs: https://typescript-eslint.io/rules/dot-notation/
 			 */
@@ -39,86 +39,6 @@ export const typescriptSemantic = [
 					allowPrivateClassPropertyAccess: false,
 					allowProtectedClassPropertyAccess: false,
 					allowIndexSignaturePropertyAccess: false,
-				},
-			],
-
-			/**
-			 * RU: В strict-режиме ограничивает вложенность сильнее, чтобы функции оставались плоскими и читаемыми.
-			 * EN: In strict mode, limits nesting more aggressively so functions stay flat and readable.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-depth
-			 */
-			"max-depth": [
-				"error",
-				{
-					max: 3,
-				},
-			],
-
-			/**
-			 * RU: Предупреждает о неявных приведениях типов, чтобы преобразования были записаны явно и читались без JS-трюков.
-			 * EN: Warns about implicit type coercions so conversions are explicit and readable without JavaScript tricks.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/no-implicit-coercion
-			 */
-			"no-implicit-coercion": [
-				"warn",
-				{
-					boolean: true,
-					number: true,
-					string: true,
-					disallowTemplateShorthand: false,
-					allow: [],
-				},
-			],
-
-			/**
-			 * RU: В strict-режиме getter/setter должны быть сгруппированы строго.
-			 * EN: In strict mode, getter/setter pairs must be grouped strictly.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/grouped-accessor-pairs
-			 */
-			"grouped-accessor-pairs": [ "error", "getBeforeSet" ],
-
-			/**
-			 * RU: В strict-режиме раньше предупреждает о слишком больших функциях.
-			 * EN: In strict mode, warns earlier about oversized functions.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-lines-per-function
-			 */
-			"max-lines-per-function": [
-				"warn",
-				{
-					max: 50,
-					skipBlankLines: true,
-					skipComments: true,
-					IIFEs: false,
-				},
-			],
-
-			/**
-			 * RU: Предупреждает о слишком глубокой вложенности callback-функций, чтобы не допускать callback hell.
-			 * EN: Warns about deeply nested callback functions to avoid callback hell.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-nested-callbacks
-			 */
-			"max-nested-callbacks": [
-				"warn",
-				{
-					max: 3,
-				},
-			],
-
-			/**
-			 * RU: В strict-режиме раньше предупреждает о функциях с большим количеством инструкций.
-			 * EN: In strict mode, warns earlier about functions with many statements.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-statements
-			 */
-			"max-statements": [
-				"warn",
-				{
-					max: 15,
 				},
 			],
 

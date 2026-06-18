@@ -1,7 +1,7 @@
 export const nestConventions = [
 	{
 		name: "@dubium/eslint-config/nest/conventions",
-		files: [ "**/*.{ts,mts,cts}" ],
+		files: ["**/*.{ts,mts,cts}"],
 		rules: {
 			/**
 			 * RU: Требует interface для описания объектных TypeScript-типов в NestJS-коде.
@@ -9,10 +9,7 @@ export const nestConventions = [
 			 *
 			 * Docs: https://typescript-eslint.io/rules/consistent-type-definitions/
 			 */
-			"@typescript-eslint/consistent-type-definitions": [
-				"error",
-				"interface",
-			],
+			"@typescript-eslint/consistent-type-definitions": ["error", "interface"],
 
 			/**
 			 * RU: Не требует явно указывать public/private/protected у members, чтобы не перегружать NestJS-классы лишним шумом.
@@ -39,12 +36,12 @@ export const nestConventions = [
 			"@typescript-eslint/naming-convention": [
 				"warn",
 				{
-					format: [ "camelCase", "PascalCase", "UPPER_CASE" ],
+					format: ["camelCase", "PascalCase", "UPPER_CASE"],
 					leadingUnderscore: "allow",
 					selector: "variableLike",
 				},
 				{
-					format: [ "PascalCase" ],
+					format: ["PascalCase"],
 					selector: "typeLike",
 				},
 				{
@@ -52,7 +49,7 @@ export const nestConventions = [
 						match: false,
 						regex: "^I[A-Z]",
 					},
-					format: [ "PascalCase" ],
+					format: ["PascalCase"],
 					selector: "interface",
 				},
 			],
@@ -60,12 +57,7 @@ export const nestConventions = [
 	},
 	{
 		name: "@dubium/eslint-config/nest/dto",
-		files: [
-			"**/*.dto.ts",
-			"**/*.input.ts",
-			"**/*.request.ts",
-			"**/*.response.ts",
-		],
+		files: ["**/*.dto.ts", "**/*.input.ts", "**/*.request.ts", "**/*.response.ts"],
 		rules: {
 			/**
 			 * RU: Разрешает DTO/input/response классы без методов, потому что они описывают контракт данных.
@@ -78,7 +70,7 @@ export const nestConventions = [
 	},
 	{
 		name: "@dubium/eslint-config/nest/tests",
-		files: [ "**/*.spec.ts", "**/*.test.ts", "**/test/**/*.ts" ],
+		files: ["**/*.spec.ts", "**/*.test.ts", "**/test/**/*.ts"],
 		rules: {
 			/**
 			 * RU: Разрешает any в NestJS-тестах для mock/spies и частичных тестовых объектов.

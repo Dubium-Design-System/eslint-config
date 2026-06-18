@@ -3,7 +3,7 @@ import perfectionistPlugin from "eslint-plugin-perfectionist"
 export const commonSorting = [
 	{
 		name: "@dubium/eslint-config/common/sorting",
-		files: [ "**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}" ],
+		files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"],
 		plugins: {
 			perfectionist: perfectionistPlugin,
 		},

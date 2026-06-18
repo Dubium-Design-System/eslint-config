@@ -3,7 +3,7 @@ import perfectionistPlugin from "eslint-plugin-perfectionist"
 export const typescriptSorting = [
 	{
 		name: "@dubium/eslint-config/typescript/sorting",
-		files: [ "**/*.{ts,tsx,mts,cts}" ],
+		files: ["**/*.{ts,tsx,mts,cts}"],
 		plugins: {
 			perfectionist: perfectionistPlugin,
 		},

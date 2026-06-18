@@ -4,7 +4,7 @@ import globals from "globals"
 export const nodeRuntime = [
 	{
 		name: "@dubium/eslint-config/node/runtime",
-		files: [ "**/*.{js,mjs,cjs,ts,mts,cts}" ],
+		files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
 
 		languageOptions: {
 			globals: {
@@ -117,7 +117,7 @@ export const nodeRuntime = [
 			 *
 			 * Docs: https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/buffer.md
 			 */
-			"n/prefer-global/buffer": [ "error", "never" ],
+			"n/prefer-global/buffer": ["error", "never"],
 
 			/**
 			 * RU: Разрешает использовать глобальный console без импорта из node:console.
@@ -125,7 +125,7 @@ export const nodeRuntime = [
 			 *
 			 * Docs: https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md
 			 */
-			"n/prefer-global/console": [ "error", "always" ],
+			"n/prefer-global/console": ["error", "always"],
 
 			/**
 			 * RU: Требует импортировать process из node:process вместо использования глобального process.
@@ -133,7 +133,7 @@ export const nodeRuntime = [
 			 *
 			 * Docs: https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/process.md
 			 */
-			"n/prefer-global/process": [ "error", "never" ],
+			"n/prefer-global/process": ["error", "never"],
 
 			/**
 			 * RU: Требует использовать node: protocol при импорте встроенных Node.js модулей.
@@ -147,7 +147,7 @@ export const nodeRuntime = [
 
 	{
 		name: "@dubium/eslint-config/node/commonjs",
-		files: [ "**/*.{cjs,cts}" ],
+		files: ["**/*.{cjs,cts}"],
 
 		languageOptions: {
 			sourceType: "commonjs",

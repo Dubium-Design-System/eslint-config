@@ -5,7 +5,7 @@ export const commonJavascript = [
 	eslintJs.configs.recommended,
 	{
 		name: "@dubium/eslint-config/common/javascript",
-		files: [ "**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}" ],
+		files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"],
 		languageOptions: {
 			ecmaVersion: "latest",
 			sourceType: "module",
@@ -41,8 +41,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/no-debugger
 			 */
-			"no-debugger":
-				process.env.NODE_ENV === "production" ? "error" : "warn",
+			"no-debugger": process.env.NODE_ENV === "production" ? "error" : "warn",
 
 			/**
 			 * RU: Запрещает дублирование импортов из одного модуля.
@@ -109,16 +108,16 @@ export const commonJavascript = [
 			"no-use-before-define": "error",
 
 			/**
-			 * RU: Предупреждает о возможных race conditions при async-обновлениях.
-			 * EN: Warns about possible race conditions in async updates.
+			 * RU: Запрещает потенциально небезопасные async-обновления, которые могут привести к race conditions.
+			 * EN: Disallows potentially unsafe async updates that can lead to race conditions.
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/require-atomic-updates
 			 */
 			"require-atomic-updates": "error",
 
 			/**
-			 * RU: Запрещает setter без getter, потому что write-only accessor делает API класса или объекта неочевидным.
-			 * EN: Disallows setters without getters because write-only accessors make class or object APIs unclear.
+			 * RU: Предупреждает о setter без getter, потому что write-only accessor делает API класса или объекта неочевидным.
+			 * EN: Warns about setters without getters because write-only accessors make class or object APIs unclear.
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/accessor-pairs
 			 */
@@ -133,8 +132,8 @@ export const commonJavascript = [
 			],
 
 			/**
-			 * RU: Требует краткое тело arrow-функции там, где block body и return не нужны.
-			 * EN: Requires concise arrow function bodies when a block body and return statement are unnecessary.
+			 * RU: Предупреждает, если arrow-функцию можно записать короче без block body и return.
+			 * EN: Warns when an arrow function can be written more concisely without a block body and return statement.
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/arrow-body-style
 			 */
@@ -173,7 +172,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/curly
 			 */
-			curly: [ "error", "all" ],
+			curly: ["error", "all"],
 
 			/**
 			 * RU: Предупреждает, если switch не содержит default-ветку или явный комментарий no default.
@@ -213,7 +212,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/grouped-accessor-pairs
 			 */
-			"grouped-accessor-pairs": [ "warn", "getBeforeSet" ],
+			"grouped-accessor-pairs": ["warn", "getBeforeSet"],
 
 			/**
 			 * RU: Требует проверять собственность свойства внутри for...in, чтобы не обрабатывать свойства из prototype chain.
@@ -259,30 +258,18 @@ export const commonJavascript = [
 			],
 
 			/**
-			 * RU: Предупреждает, если файл становится слишком большим, чтобы вовремя разделять ответственность по модулям.
-			 * EN: Warns when a file becomes too large so responsibilities can be split across modules in time.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-lines
-			 */
-			"max-lines": [
-				"warn",
-				{
-					max: 300,
-					skipBlankLines: true,
-					skipComments: true,
-				},
-			],
-
-			/**
 			 * RU: Предупреждает, если функция становится слишком большой, чтобы вовремя выносить части логики в отдельные функции.
 			 * EN: Warns when a function becomes too large so parts of the logic can be extracted into smaller functions in time.
+			 *
+			 * Не является жёстким архитектурным запретом: инфраструктурные хуки, render-функции
+			 * и большие factory-функции могут иметь отдельные override-исключения.
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/max-lines-per-function
 			 */
 			"max-lines-per-function": [
 				"warn",
 				{
-					max: 80,
+					max: 90,
 					skipBlankLines: true,
 					skipComments: true,
 					IIFEs: false,
@@ -368,8 +355,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/no-console
 			 */
-			"no-console":
-				process.env.NODE_ENV === "production" ? "error" : "warn",
+			"no-console": process.env.NODE_ENV === "production" ? "error" : "warn",
 
 			/**
 			 * RU: Запрещает регулярные выражения, начинающиеся с =, потому что /= можно спутать с оператором деления с присваиванием.
@@ -538,8 +524,11 @@ export const commonJavascript = [
 			],
 
 			/**
-			 * RU: Запрещает default export, чтобы публичный API модулей был явным и импортировался через named exports.
-			 * EN: Disallows default export so module public APIs stay explicit and are imported through named exports.
+			 * RU: Запрещает default export, чтобы публичный API модулей был явным
+			 * и импортировался через named exports.
+			 *
+			 * EN: Disallows default export so module public APIs stay explicit
+			 * and are imported through named exports.
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/no-restricted-exports
 			 */
@@ -558,11 +547,6 @@ export const commonJavascript = [
 
 			/**
 			 * RU: Запрещает нежелательные глобальные переменные, чтобы не использовать неявные browser/test globals.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/no-restricted-globals
-			 */
-			/**
-			 * RU: Запрещает нежелательные глобальные переменные, чтобы не использовать неявные browser/test globals.
 			 * EN: Disallows unwanted global variables to avoid implicit browser/test globals.
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/no-restricted-globals
@@ -571,8 +555,7 @@ export const commonJavascript = [
 				"error",
 				{
 					name: "event",
-					message:
-						"Используй локальный параметр event вместо глобальной переменной.",
+					message: "Используй локальный параметр event вместо глобальной переменной.",
 				},
 				{
 					name: "fdescribe",
@@ -591,15 +574,13 @@ export const commonJavascript = [
 				{
 					patterns: [
 						{
-							group: [ "./*", "../*", "@dubium/*" ],
+							group: ["./*", "../*", "@dubium/*"],
 							importNamePattern: "^default$",
-							message:
-								"Во внутренних модулях используй named import вместо default import.",
+							message: "Во внутренних модулях используй named import вместо default import.",
 						},
 						{
-							group: [ "@dubium/*/src/**", "@dubium/*/dist/**" ],
-							message:
-								"Импортируй пакет через публичный API, а не через src/dist.",
+							group: ["@dubium/*/src/**", "@dubium/*/dist/**"],
+							message: "Импортируй пакет через публичный API, а не через src/dist.",
 						},
 					],
 				},
@@ -611,7 +592,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/no-return-assign
 			 */
-			"no-return-assign": [ "error", "always" ],
+			"no-return-assign": ["error", "always"],
 
 			/**
 			 * RU: Запрещает javascript: URL, потому что такой код выполняется браузером как eval.
@@ -701,7 +682,7 @@ export const commonJavascript = [
 			"no-warning-comments": [
 				"warn",
 				{
-					terms: [ "todo", "fixme", "xxx" ],
+					terms: ["todo", "fixme", "xxx"],
 					location: "start",
 				},
 			],
@@ -726,7 +707,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/operator-assignment
 			 */
-			"operator-assignment": [ "error", "always" ],
+			"operator-assignment": ["error", "always"],
 
 			/**
 			 * RU: Требует arrow functions для callback-функций, чтобы код был короче и не требовал ручного bind(this).
@@ -862,7 +843,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/radix
 			 */
-			radix: [ "error", "always" ],
+			radix: ["error", "always"],
 
 			/**
 			 * RU: Предупреждает, если RegExp не использует Unicode-флаг u, чтобы регулярные выражения корректнее работали с Unicode.
@@ -891,7 +872,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/yoda
 			 */
-			yoda: [ "error", "never" ],
+			yoda: ["error", "never"],
 
 			/**
 			 * RU: Запрещает Unicode BOM в начале файла, потому что для UTF-8 он не нужен и может создавать проблемы с инструментами.
@@ -899,7 +880,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/unicode-bom
 			 */
-			"unicode-bom": [ "error", "never" ],
+			"unicode-bom": ["error", "never"],
 		},
 	},
 ]

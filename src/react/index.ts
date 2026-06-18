@@ -1,4 +1,5 @@
 export { reactCore } from "./core.js"
+export { reactHooks } from "./hooks.js"
 export { reactRecommended } from "./recommended.js"
 export { reactStrict } from "./strict.js"
 export { reactStylistic } from "./stylistic.js"

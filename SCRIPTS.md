@@ -32,10 +32,10 @@ tsc -p tsconfig.build.json
 
 ### `npm run prepack`
 
-Запускает очистку и сборку:
+Запускает очистку, сборку и self-lint:
 
 ```bash
-npm run clean && npm run build
+npm run clean && npm run build && npm run lint
 ```
 
 Эта команда автоматически выполняется перед:

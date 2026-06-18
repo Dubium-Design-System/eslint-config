@@ -1,18 +1,23 @@
 import eslintReactPlugin from "@eslint-react/eslint-plugin"
 import reactRefreshPlugin from "eslint-plugin-react-refresh"
 
-const reactRecommendedConfig
-	= eslintReactPlugin.configs["recommended-typescript"]
-	?? eslintReactPlugin.configs.recommended
-const reactRecommendedConfigs = Array.isArray(reactRecommendedConfig)
-	? reactRecommendedConfig
-	: [ reactRecommendedConfig ]
+const reactRecommendedConfig =
+	eslintReactPlugin.configs["recommended-typescript"] ?? eslintReactPlugin.configs.recommended
+
+const reactFiles = ["**/*.{jsx,tsx}"]
+
+const reactRecommendedConfigs = (
+	Array.isArray(reactRecommendedConfig) ? reactRecommendedConfig : [reactRecommendedConfig]
+).map((config) => ({
+	...config,
+	files: config.files ?? reactFiles,
+}))
 
 export const reactCore = [
 	...reactRecommendedConfigs,
 	{
 		name: "@dubium/eslint-config/react/core",
-		files: [ "**/*.{jsx,tsx}" ],
+		files: ["**/*.{jsx,tsx}"],
 		languageOptions: {
 			parserOptions: {
 				ecmaFeatures: {
@@ -103,14 +108,6 @@ export const reactCore = [
 			 * Docs: https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
 			 */
 			"@eslint-react/dom-no-void-elements-with-children": "error",
-
-			/**
-			 * RU: Предупреждает о неполном списке зависимостей React Hooks.
-			 * EN: Warns about incomplete dependency lists in React Hooks.
-			 *
-			 * Docs: https://eslint-react.xyz/docs/rules/exhaustive-deps
-			 */
-			"@eslint-react/exhaustive-deps": "warn",
 
 			/**
 			 * RU: Предупреждает об использовании children как обычного prop.
@@ -289,14 +286,6 @@ export const reactCore = [
 			"@eslint-react/no-unstable-context-value": "error",
 
 			/**
-			 * RU: Запрещает нарушение Rules of Hooks.
-			 * EN: Disallows violations of the Rules of Hooks.
-			 *
-			 * Docs: https://eslint-react.xyz/docs/rules/rules-of-hooks
-			 */
-			"@eslint-react/rules-of-hooks": "error",
-
-			/**
 			 * RU: Требует правильное именование пары состояния и setter у useState.
 			 * EN: Requires proper naming for useState value and setter pairs.
 			 *
@@ -305,7 +294,9 @@ export const reactCore = [
 			"@eslint-react/use-state": [
 				"error",
 				{
-					allowDestructuredState: false,
+					enforceAssignment: true,
+					enforceLazyInitialization: true,
+					enforceSetterName: true,
 				},
 			],
 
@@ -315,7 +306,59 @@ export const reactCore = [
 			 *
 			 * Docs: https://github.com/ArnaudBarre/eslint-plugin-react-refresh#only-export-components
 			 */
-			"react-refresh/only-export-components": "warn",
+			"react-refresh/only-export-components": [
+				"warn",
+				{
+					allowConstantExport: true,
+					extraHOCs: ["observer"],
+				},
+			],
+
+			/**
+			 * RU: Разрешает прямой default export в React-файлах,
+			 * потому что React.lazy(() => import("./Component")) ожидает default export.
+			 *
+			 * При этом запрещает default re-export через barrel-файлы,
+			 * чтобы публичный API оставался явным и не появлялись бессмысленные default-прокладки.
+			 *
+			 * EN: Allows direct default export in React files because
+			 * React.lazy(() => import("./Component")) expects a default export.
+			 *
+			 * Still disallows default re-exports from barrel files so public APIs stay explicit
+			 * and meaningless default proxy exports are avoided.
+			 *
+			 * Docs: https://eslint.org/docs/latest/rules/no-restricted-exports
+			 */
+			"no-restricted-exports": [
+				"error",
+				{
+					restrictDefaultExports: {
+						direct: false,
+						named: true,
+						defaultFrom: true,
+						namedFrom: true,
+						namespaceFrom: true,
+					},
+				},
+			],
+		},
+	},
+	{
+		files: ["**/*.{tsx,jsx}"],
+		rules: {
+			/**
+			 * RU: Для React-файлов лимит выше, потому что JSX и хуки естественно увеличивают тело функции.
+			 * EN: Uses a higher limit for React files because JSX and hooks naturally increase function body size.
+			 */
+			"max-lines-per-function": [
+				"warn",
+				{
+					max: 160,
+					skipBlankLines: true,
+					skipComments: true,
+					IIFEs: false,
+				},
+			],
 		},
 	},
 ]

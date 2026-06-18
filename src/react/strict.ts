@@ -4,7 +4,7 @@ export const reactStrict = [
 	...reactRecommended,
 	{
 		name: "@dubium/eslint-config/react-strict",
-		files: [ "**/*.{jsx,tsx}" ],
+		files: ["**/*.{jsx,tsx}"],
 		rules: {
 			/**
 			 * RU: В strict-режиме запрещает dangerouslySetInnerHTML.

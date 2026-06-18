@@ -4,7 +4,7 @@ export const legacy = [
 	...recommendedFast,
 	{
 		name: "@dubium/eslint-config/legacy",
-		files: [ "**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}" ],
+		files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"],
 		rules: {
 			/**
 			 * RU: В legacy-коде разрешает any, чтобы не блокировать постепенную типизацию.
