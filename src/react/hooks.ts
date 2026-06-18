@@ -1,6 +1,11 @@
+import eslintReactPlugin from "@eslint-react/eslint-plugin"
+
 export const reactHooks = {
 	name: "@dubium/eslint-config/react/hooks",
-	files: ["**/*.{js,jsx,ts,tsx}"],
+	files: ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"],
+	plugins: {
+		"@eslint-react": eslintReactPlugin,
+	},
 	rules: {
 		/**
 		 * RU: Запрещает нарушение Rules of Hooks.
