@@ -1,11 +1,24 @@
+import type { Linter } from "eslint"
+
 import process from "node:process"
 import tseslint from "typescript-eslint"
 
+const typescriptFiles = ["**/*.{ts,tsx,mts,cts}"]
+
+type FlatConfig = Linter.Config
+
+const recommendedTypeCheckedConfigs = (tseslint.configs.recommendedTypeChecked as FlatConfig[]).map(
+	(config): FlatConfig => ({
+		...config,
+		files: config.files ?? typescriptFiles,
+	}),
+)
+
 export const typescriptSemantic = [
-	...tseslint.configs.recommendedTypeChecked,
+	...recommendedTypeCheckedConfigs,
 	{
 		name: "@dubium/eslint-config/typescript/semantic/setup",
-		files: ["**/*.{ts,tsx,mts,cts}"],
+		files: typescriptFiles,
 		languageOptions: {
 			parser: tseslint.parser,
 			parserOptions: {
@@ -16,7 +29,7 @@ export const typescriptSemantic = [
 	},
 	{
 		name: "@dubium/eslint-config/typescript/semantic/rules",
-		files: ["**/*.{ts,tsx,mts,cts}"],
+		files: typescriptFiles,
 		rules: {
 			/**
 			 * RU: Отключаем core-правило для TypeScript, потому что TS-версия учитывает типы, index signatures и private/protected members.
