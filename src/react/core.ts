@@ -3,6 +3,9 @@ import type { Linter } from "eslint"
 import eslintReactPlugin from "@eslint-react/eslint-plugin"
 import reactRefreshPlugin from "eslint-plugin-react-refresh"
 
+const reactFiles = ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"]
+const reactJsxFiles = ["**/*.{jsx,tsx}"]
+
 const reactRecommendedConfig =
 	eslintReactPlugin.configs["recommended-typescript"] ?? eslintReactPlugin.configs.recommended
 
@@ -11,19 +14,32 @@ const reactRecommendedConfigs = (
 ) as Linter.Config[]
 
 const normalizedReactRecommendedConfigs = reactRecommendedConfigs.map((config): Linter.Config => {
-	const { "@eslint-react/use-state": _useStateRule, ...rules } = config.rules ?? {}
+	const normalizedConfig: Linter.Config = { ...config }
+	const rules = { ...normalizedConfig.rules }
 
-	return {
-		...config,
-		rules,
-	}
+	delete normalizedConfig.plugins
+	delete rules["@eslint-react/use-state"]
+
+	normalizedConfig.files ??= reactJsxFiles
+	normalizedConfig.rules = rules
+
+	return normalizedConfig
 })
 
 export const reactCore = [
+	{
+		name: "@dubium/eslint-config/react/plugin",
+		files: reactFiles,
+		plugins: {
+			"@eslint-react": eslintReactPlugin,
+		},
+	},
+
 	...normalizedReactRecommendedConfigs,
+
 	{
 		name: "@dubium/eslint-config/react/core",
-		files: ["**/*.{jsx,tsx}"],
+		files: reactJsxFiles,
 		languageOptions: {
 			parserOptions: {
 				ecmaFeatures: {

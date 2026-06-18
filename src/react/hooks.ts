@@ -1,4 +1,4 @@
-import eslintReactPlugin from "@eslint-react/eslint-plugin"
+const reactFiles = ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"]
 
 const reactHooksRules = {
 	/**
@@ -20,16 +20,8 @@ const reactHooksRules = {
 
 export const reactHooks = [
 	{
-		name: "@dubium/eslint-config/react/hooks/jsx",
-		files: ["**/*.{jsx,tsx}"],
-		rules: reactHooksRules,
-	},
-	{
-		name: "@dubium/eslint-config/react/hooks/non-jsx",
-		files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-		plugins: {
-			"@eslint-react": eslintReactPlugin,
-		},
+		name: "@dubium/eslint-config/react/hooks",
+		files: reactFiles,
 		rules: reactHooksRules,
 	},
 ]
