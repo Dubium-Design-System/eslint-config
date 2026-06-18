@@ -474,3 +474,21 @@ npm run publish:next
 ```bash
 npm run publish:release
 ```
+
+## Последовательный релиз
+
+```bash
+npm run build
+npm run lint
+npm run pack:check
+
+git status
+git add .
+git commit -m "fix: prepare beta release"
+
+npm version prerelease --preid beta
+
+npm publish --access public --tag beta
+
+git push --follow-tags
+```
