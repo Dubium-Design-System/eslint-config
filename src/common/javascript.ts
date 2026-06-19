@@ -574,13 +574,34 @@ export const commonJavascript = [
 				{
 					patterns: [
 						{
-							group: ["./*", "../*", "@dubium/*"],
-							importNamePattern: "^default$",
-							message: "Во внутренних модулях используй named import вместо default import.",
-						},
-						{
-							group: ["@dubium/*/src/**", "@dubium/*/dist/**"],
-							message: "Импортируй пакет через публичный API, а не через src/dist.",
+							group: [
+								"./*",
+								"../*",
+								"./**/*",
+								"../**/*",
+
+								"!./*.module.css",
+								"!./*.module.scss",
+								"!./*.module.sass",
+								"!./*.module.less",
+
+								"!./**/*.module.css",
+								"!./**/*.module.scss",
+								"!./**/*.module.sass",
+								"!./**/*.module.less",
+
+								"!../*.module.css",
+								"!../*.module.scss",
+								"!../*.module.sass",
+								"!../*.module.less",
+
+								"!../**/*.module.css",
+								"!../**/*.module.scss",
+								"!../**/*.module.sass",
+								"!../**/*.module.less",
+							],
+							importNames: ["default"],
+							message: "Во внутренних модулях используй named import вместо default import",
 						},
 					],
 				},
