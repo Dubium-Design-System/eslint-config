@@ -1,7 +1,13 @@
+import reactPlugin from "@eslint-react/eslint-plugin"
+
 import { reactRecommended } from "./recommended.js"
 
 const reactFiles = ["src/**/*.{ts,tsx}"]
 const reactJsxFiles = ["src/**/*.{jsx,tsx}"]
+
+const reactPlugins = {
+	"@eslint-react": reactPlugin,
+}
 
 const reactStrictRules = {
 	/**
@@ -356,11 +362,13 @@ export const reactStrict = [
 	{
 		name: "@dubium/eslint-config/react/strict",
 		files: reactFiles,
+		plugins: reactPlugins,
 		rules: reactStrictRules,
 	},
 	{
 		name: "@dubium/eslint-config/react/strict-jsx",
 		files: reactJsxFiles,
+		plugins: reactPlugins,
 		rules: reactStrictJsxRules,
 	},
 ]
