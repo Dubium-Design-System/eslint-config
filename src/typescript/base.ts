@@ -157,14 +157,7 @@ export const typescriptBase = [
 			 *
 			 * Docs: https://typescript-eslint.io/rules/no-unused-vars/
 			 */
-			"@typescript-eslint/no-unused-vars": [
-				"warn",
-				{
-					argsIgnorePattern: "^_",
-					caughtErrorsIgnorePattern: "^_",
-					varsIgnorePattern: "^_",
-				},
-			],
+			"@typescript-eslint/no-unused-vars": ["warn"],
 
 			/**
 			 * RU: Требует as const вместо ручного literal type assertion.

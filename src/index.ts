@@ -16,7 +16,9 @@ export { recommendedFast } from "./presets/recommended-fast.js"
 
 export { recommended } from "./presets/recommended.js"
 export { reactCore } from "./react/core.js"
+export { react19Recommended, react19Strict } from "./react/react19.js"
 export { reactRecommended } from "./react/recommended.js"
+export { reactRscRecommended, reactRscStrict } from "./react/rsc.js"
 export { reactStrict } from "./react/strict.js"
 
 export { reactStylistic } from "./react/stylistic.js"
