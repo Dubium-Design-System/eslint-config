@@ -1,7 +1,8 @@
 import eslintReactPlugin from "@eslint-react/eslint-plugin"
 import reactRefreshPlugin from "eslint-plugin-react-refresh"
 
-const reactFiles = ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"]
+const reactFiles = ["**/*.{tsx}", "**/use*.{ts,mts,cts}"]
+const reactPluginFiles = ["**/*.{jsx,tsx}", "**/use*.{ts,mts,cts}"]
 const reactJsxFiles = ["**/*.{jsx,tsx}"]
 
 const reactCommonRules = {
@@ -484,7 +485,7 @@ const reactJsxRules = {
 export const reactCore = [
 	{
 		name: "@dubium/eslint-config/react/plugin",
-		files: reactFiles,
+		files: reactPluginFiles,
 		plugins: {
 			"@eslint-react": eslintReactPlugin,
 		},

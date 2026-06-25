@@ -1,6 +1,6 @@
 import { reactRecommended } from "./recommended.js"
 
-const reactFiles = ["**/*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}"]
+const reactFiles = ["**/*.{tsx}", "**/use*.{ts,mts,cts}"]
 const reactJsxFiles = ["**/*.{jsx,tsx}"]
 
 const reactStrictRules = {
