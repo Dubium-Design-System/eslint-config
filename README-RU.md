@@ -1,6 +1,6 @@
 # @dubium/eslint-config
 
-**Язык:** [English](./README.md) | Русский
+**Язык:** [English](https://github.com/Dubium-Design-System/eslint-config/blob/main/README.md) | Русский
 
 Opinionated ESLint flat config для TypeScript, React, NestJS, Node.js и browser-проектов.
 
@@ -20,12 +20,6 @@ TypeScript  >=6.0.3 <7
 
 ```bash
 npm install -D @dubium/eslint-config eslint typescript
-```
-
-Для текущего alpha-релиза:
-
-```bash
-npm install -D @dubium/eslint-config@alpha eslint typescript
 ```
 
 Если проект использует Prettier, совместимость с Prettier подключается отдельно:

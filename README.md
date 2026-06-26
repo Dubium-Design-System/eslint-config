@@ -1,6 +1,6 @@
 # @dubium/eslint-config
 
-**Language:** English | [Русский](./README-RU.md)
+**Language:** English | [Русский](https://github.com/Dubium-Design-System/eslint-config/blob/main/README-RU.md)
 
 Opinionated ESLint flat config for TypeScript, React, NestJS, Node.js, and browser projects.
 
@@ -20,12 +20,6 @@ This package is ESM-only and supports only ESLint flat config.
 
 ```bash
 npm install -D @dubium/eslint-config eslint typescript
-```
-
-For the current alpha release:
-
-```bash
-npm install -D @dubium/eslint-config@alpha eslint typescript
 ```
 
 If the project uses Prettier, install Prettier compatibility separately:
