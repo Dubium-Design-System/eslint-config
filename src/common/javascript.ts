@@ -20,6 +20,20 @@ export const commonJavascript = [
 			"array-callback-return": "error",
 
 			/**
+			 * RU: Запрещает wildcard-экспорт `export * from "..."`, чтобы публичный API модуля был явным и контролируемым.
+			 * EN: Disallows wildcard exports `export * from "..."` to keep the module public API explicit and controlled.
+			 *
+			 * Docs: https://eslint.org/docs/latest/rules/no-restricted-syntax
+			 */
+			"no-restricted-syntax": [
+				"error",
+				{
+					selector: "ExportAllDeclaration",
+					message: "Не используй export *. Экспортируй сущности явно через named exports.",
+				},
+			],
+
+			/**
 			 * RU: Запрещает await внутри циклов, чтобы не создавать случайное последовательное выполнение async-операций.
 			 * EN: Disallows await inside loops to avoid accidental sequential execution of async operations.
 			 *
@@ -137,26 +151,7 @@ export const commonJavascript = [
 			 *
 			 * Docs: https://eslint.org/docs/latest/rules/arrow-body-style
 			 */
-			"arrow-body-style": [
-				"warn",
-				"as-needed",
-				{
-					requireReturnForObjectLiteral: false,
-				},
-			],
-
-			/**
-			 * RU: Предупреждает о функциях со слишком большим количеством ветвлений, чтобы вовремя выносить сложную логику в отдельные функции.
-			 * EN: Warns about functions with too many branches so complex logic can be extracted into smaller functions.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/complexity
-			 */
-			complexity: [
-				"warn",
-				{
-					max: 10,
-				},
-			],
+			"arrow-body-style": "off",
 
 			/**
 			 * RU: Требует, чтобы функция либо всегда возвращала значение, либо не возвращала его ни в одной ветке.
@@ -258,25 +253,6 @@ export const commonJavascript = [
 			],
 
 			/**
-			 * RU: Предупреждает, если функция становится слишком большой, чтобы вовремя выносить части логики в отдельные функции.
-			 * EN: Warns when a function becomes too large so parts of the logic can be extracted into smaller functions in time.
-			 *
-			 * Не является жёстким архитектурным запретом: инфраструктурные хуки, render-функции
-			 * и большие factory-функции могут иметь отдельные override-исключения.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-lines-per-function
-			 */
-			"max-lines-per-function": [
-				"warn",
-				{
-					max: 90,
-					skipBlankLines: true,
-					skipComments: true,
-					IIFEs: false,
-				},
-			],
-
-			/**
 			 * RU: Предупреждает о функциях со слишком большим количеством параметров, чтобы вместо длинного списка аргументов использовать объект параметров.
 			 * EN: Warns about functions with too many parameters so a parameters object is used instead of a long argument list.
 			 *
@@ -286,19 +262,6 @@ export const commonJavascript = [
 				"warn",
 				{
 					max: 4,
-				},
-			],
-
-			/**
-			 * RU: Предупреждает, если функция содержит слишком много инструкций, чтобы вовремя выносить шаги логики в отдельные функции.
-			 * EN: Warns when a function contains too many statements so logic steps can be extracted into smaller functions in time.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-statements
-			 */
-			"max-statements": [
-				"warn",
-				{
-					max: 20,
 				},
 			],
 

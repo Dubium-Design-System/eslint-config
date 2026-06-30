@@ -30,20 +30,12 @@ export const typescriptStrict = [
 			"grouped-accessor-pairs": ["error", "getBeforeSet"],
 
 			/**
-			 * RU: В strict-режиме раньше предупреждает о слишком больших функциях.
-			 * EN: In strict mode, warns earlier about oversized functions.
+			 * RU: Требует фигурные скобки для всех управляющих конструкций, чтобы избежать ошибок при добавлении новых строк в if/else/for/while.
+			 * EN: Requires curly braces for all control statements to avoid bugs when adding new lines to if/else/for/while bodies.
 			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-lines-per-function
+			 * Docs: https://eslint.org/docs/latest/rules/curly
 			 */
-			"max-lines-per-function": [
-				"warn",
-				{
-					max: 50,
-					skipBlankLines: true,
-					skipComments: true,
-					IIFEs: false,
-				},
-			],
+			curly: ["error", "all"],
 
 			/**
 			 * RU: В strict-режиме предупреждает о слишком глубокой вложенности callback-функций, чтобы не допускать callback hell.
@@ -55,19 +47,6 @@ export const typescriptStrict = [
 				"warn",
 				{
 					max: 3,
-				},
-			],
-
-			/**
-			 * RU: В strict-режиме раньше предупреждает о функциях с большим количеством инструкций.
-			 * EN: In strict mode, warns earlier about functions with many statements.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-statements
-			 */
-			"max-statements": [
-				"warn",
-				{
-					max: 15,
 				},
 			],
 		},

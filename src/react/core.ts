@@ -548,23 +548,4 @@ export const reactCore = [
 			],
 		},
 	},
-	{
-		name: "@dubium/eslint-config/react/component-size",
-		files: reactJsxFiles,
-		rules: {
-			/**
-			 * RU: Для React-файлов лимит выше, потому что JSX и хуки естественно увеличивают тело функции.
-			 * EN: Uses a higher limit for React files because JSX and hooks naturally increase function body size.
-			 */
-			"max-lines-per-function": [
-				"warn",
-				{
-					max: 160,
-					skipBlankLines: true,
-					skipComments: true,
-					IIFEs: false,
-				},
-			],
-		},
-	},
 ]

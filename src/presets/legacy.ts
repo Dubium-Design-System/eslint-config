@@ -53,22 +53,6 @@ export const legacy = [
 			 * Docs: https://eslint.org/docs/latest/rules/no-console
 			 */
 			"no-console": "warn",
-
-			/**
-			 * RU: В legacy-коде допускает более крупные функции, чтобы не блокировать постепенную миграцию.
-			 * EN: Allows larger functions in legacy code to avoid blocking gradual migration.
-			 *
-			 * Docs: https://eslint.org/docs/latest/rules/max-lines-per-function
-			 */
-			"max-lines-per-function": [
-				"warn",
-				{
-					max: 120,
-					skipBlankLines: true,
-					skipComments: true,
-					IIFEs: false,
-				},
-			],
 		},
 	},
 ]
