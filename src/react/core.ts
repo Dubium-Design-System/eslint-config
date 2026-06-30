@@ -546,6 +546,25 @@ export const reactCore = [
 					},
 				},
 			],
+
+			/**
+			 * RU: Запрещает wildcard-экспорт `export * from "..."`, чтобы публичный API модуля был явным и контролируемым.
+			 * EN: Disallows wildcard exports `export * from "..."` to keep the module public API explicit and controlled.
+			 *
+			 * Docs: https://eslint.org/docs/latest/rules/no-restricted-syntax
+			 */
+			"no-restricted-syntax": [
+				"error",
+				{
+					selector: "ExportAllDeclaration",
+					message: "Не используй export *. Экспортируй сущности явно через named exports.",
+				},
+				{
+					selector: "JSXExpressionContainer > LogicalExpression[operator='&&']",
+					message:
+						"Не используй && для условного рендера в JSX. Используй тернарный оператор: condition ? <Component /> : null.",
+				},
+			],
 		},
 	},
 ]
